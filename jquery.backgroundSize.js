@@ -178,11 +178,16 @@ $.refreshBackground = function( elem ) {
 		imgDim = $.data( elem, "bgsImgDim" ),
 		$img = $( $.data( elem, "bgsImg" ) ),
 		pos = $.data( elem, "bgsPos" ),
-		prevConstrain = $.data( elem, "bgsConstrain" ),
-		currConstrain,
-		elemRatio = elemDim.width / elemDim.height,
-		imgRatio = imgDim.width / imgDim.height,
-		delta;
+		prevConstrain = $.data( elem, "bgsConstrain" );
+
+	if (!elemDim || !imgDim) {
+		return;
+	}
+
+	var currConstrain,
+			elemRatio = elemDim.width / elemDim.height,
+			imgRatio = imgDim.width / imgDim.height,
+			delta;
 
 	if ( value == "contain" ) {
 		if ( imgRatio > elemRatio ) {
