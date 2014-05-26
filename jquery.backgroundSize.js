@@ -53,7 +53,7 @@ $.cssHooks.backgroundSize = {
 			$.refreshBackgroundDimensions( elem, true );
 
 			// create wrapper and img
-			$wrapper = $( "<div>" ).css({
+			$wrapper = $( '<div class="bg-size-polyfill-wrap">' ).css({
 				position: "absolute",
 				zIndex: -1,
 				top: 0,
@@ -71,7 +71,7 @@ $.cssHooks.backgroundSize = {
 
 			$.data( elem, "bgsImg", $img[0] );
 
-			pos = ( 
+			pos = (
 				// Firefox, Chrome (for debug)
 				$.css( elem, "backgroundPosition" ) ||
 				// IE8
@@ -80,8 +80,8 @@ $.cssHooks.backgroundSize = {
 
 			// Only compatible with 1 or 2 percentage or keyword values,
 			// Not yet compatible with length values and 4 values.
-			$.data( elem, "bgsPos", [ 
-				positions[ pos[0] ] || parseFloat( pos[0] ) / 100, 
+			$.data( elem, "bgsPos", [
+				positions[ pos[0] ] || parseFloat( pos[0] ) / 100,
 				positions[ pos[1] ] || parseFloat( pos[1] ) / 100
 			]);
 
